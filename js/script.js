@@ -48,7 +48,13 @@ function displayBooks() {
   const cardRead = document.createElement('button');
   cardRead.classList.add('btn');
   cardRead.classList.add('btn-secondary');
-  books[books.length - 1].read === 'Read' ? cardRead.append('Mark as unread') : cardRead.append('Mark as read');
+
+  if (books[books.length - 1].read === 'Read') {
+    cardRead.append('Mark as unread');
+  } else {
+    cardRead.append('Mark as read');
+  }
+
   cardRead.onclick = function () {
     if (books[books.length - 1].read === 'Read') {
       books[books.length - 1].read = 'Not read';
