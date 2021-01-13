@@ -22,3 +22,15 @@ function addBook(e) {
   
 
 }
+
+
+
+const displaybutton= document.querySelector(".display-btn");
+const formCard= document.querySelector(".form-card");
+const submitButton= document.querySelector(".submit-form");
+const bookTitle= document.querySelector("#bookTitle");
+const bookPages= document.querySelector("#numberOfPages");
+const bookAuthor= document.querySelector("#author");
+const bookGenre= document.querySelector("#genre");
+const bookRead= document.querySelector("#readStatus");
+const cardDisplay= document.querySelector("#card-display");
