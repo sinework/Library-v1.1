@@ -34,3 +34,9 @@ const bookAuthor= document.querySelector("#author");
 const bookGenre= document.querySelector("#genre");
 const bookRead= document.querySelector("#readStatus");
 const cardDisplay= document.querySelector("#card-display");
+
+function displayForm(e){
+   
+    displaybutton.classList.toggle("d-none")
+    formCard.classList.toggle("d-none")
+}
