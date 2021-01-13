@@ -17,7 +17,8 @@ function addBook(e) {
     book.author=bookAuthor.value;
     book.pages=bookPages.value;
     book.genre=bookGenre.value;
-    book.read=bookRead.value? "Read":"Not read";
+    book.read=bookRead.checked==='true'? "Read":"Not read";
+    console.log(bookRead.value)
     books.push(book)
     book={};
     displayBooks();
