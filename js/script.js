@@ -82,7 +82,6 @@ const displayBooks = () => {
 
   displaybutton.classList.remove('d-none');
   formCard.classList.add('d-none');
-
 };
 
 function Book(title, author, pages, genre, read) {
