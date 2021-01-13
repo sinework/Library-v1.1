@@ -40,3 +40,6 @@ function displayForm(e){
     displaybutton.classList.toggle("d-none")
     formCard.classList.toggle("d-none")
 }
+// Event Listners
+displaybutton.addEventListener("click",displayForm, false);
+ submitButton.addEventListener("click",addBook, false);
