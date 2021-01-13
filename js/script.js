@@ -7,18 +7,10 @@ const bookAuthor = document.querySelector('#author');
 const bookGenre = document.querySelector('#genre');
 const bookRead = document.querySelector('#readStatus');
 const cardDisplay = document.querySelector('#card-display');
-// const parentID = document.getElementById('form-holder');
-// const divElement = 'div';
-// const elementID = 'form-div';
-// const headerElement = 'h3';
-// headerID = 'temp';
-let book = {};
 
-const books = [
-];
+let myLibrary = [];
 
-// const index = 0;
-function displayBooks() {
+const displayBooks = () => {
   const card = document.createElement('div');
   card.classList.add('card');
   card.classList.add('books');
@@ -30,44 +22,42 @@ function displayBooks() {
 
   const headerTag = document.createElement('h5');
   headerTag.classList.add('card-title');
-  headerTag.append(books[books.length - 1].title);
+  headerTag.append(myLibrary[myLibrary.length - 1].title);
+  console.log(myLibrary[myLibrary.length - 1].title);
   cardHeader.append(headerTag);
 
   const cardAuthor = document.createElement('p');
-  cardAuthor.append(books[books.length - 1].author);
+  cardAuthor.append(myLibrary[myLibrary.length - 1].author);
   cardBody.append(cardAuthor);
 
   const cardPages = document.createElement('p');
-  cardPages.append(books[books.length - 1].pages);
+  cardPages.append(myLibrary[myLibrary.length - 1].pages);
   cardBody.append(cardPages);
 
   const cardGenre = document.createElement('p');
-  cardGenre.append(books[books.length - 1].genre);
+  cardGenre.append(myLibrary[myLibrary.length - 1].genre);
   cardBody.append(cardGenre);
 
   const cardRead = document.createElement('button');
   cardRead.classList.add('btn');
   cardRead.classList.add('btn-secondary');
 
-  if (books[books.length - 1].read === 'Read') {
+  if (myLibrary[myLibrary.length - 1].read === 'Read') {
     cardRead.append('Mark as unread');
   } else {
     cardRead.append('Mark as read');
   }
 
   cardRead.onclick = function () {
-    if (books[books.length - 1].read === 'Read') {
-      books[books.length - 1].read = 'Not read';
+    if (myLibrary[myLibrary.length - 1].read === 'Read') {
+      myLibrary[myLibrary.length - 1].read = 'Not read';
       cardRead.innerHTML = 'Mark as read';
-    //   console.log(books[books.length - 1].read);
     } else {
-      books[books.length - 1].read = 'Read';
+      myLibrary[myLibrary.length - 1].read = 'Read';
       cardRead.innerHTML = 'Mark as unread';
-    //   console.log(books[books.length - 1].read);
     }
   };
   cardBody.append(cardRead);
-  //   console.log(books[books.length - 1].read);
 
   const cardRemove = document.createElement('button');
   cardRemove.classList.add('btn');
@@ -87,36 +77,42 @@ function displayBooks() {
     const parentCard = cardRemove.parentElement.parentElement;
     const grandParentCard = parentCard.parentElement;
     grandParentCard.removeChild(parentCard);
-    books.splice(parentCard.getAttribute('data-attribute'), 1);
-    // console.log(books);
+    myLibrary.splice(parentCard.getAttribute('data-attribute'), 1);
   };
 
 
   displaybutton.classList.remove('d-none');
   formCard.classList.add('d-none');
 
+}
 
-  // console.log(books);
+function Book(title, author, pages, genre, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.genre = genre;
+    this.read = read;
 }
 
 // display form
-function addBook(e) {
+const addBookToLibrary = (e) => {
   e.preventDefault();
-  book.title = bookTitle.value;
-  book.author = bookAuthor.value;
-  book.pages = bookPages.value;
-  book.genre = bookGenre.value;
-  book.read = bookRead.checked ? 'Read' : 'Not read';
-  books.push(book);
-  book = {};
+  const book = new Book(
+    bookTitle.value,
+    bookAuthor.value,
+    bookPages.value,
+    bookGenre.value,
+    bookRead.checked ? 'Read' : 'Not read'
+  );
+  myLibrary.push(book);
   displayBooks();
 }
 
 
-function displayForm() {
+const displayForm = () => {
   displaybutton.classList.toggle('d-none');
   formCard.classList.toggle('d-none');
 }
 // Event Listners
 displaybutton.addEventListener('click', displayForm, false);
-submitButton.addEventListener('click', addBook, false);
+submitButton.addEventListener('click', addBookToLibrary, false);
