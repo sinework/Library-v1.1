@@ -8,7 +8,7 @@ const bookGenre = document.querySelector('#genre');
 const bookRead = document.querySelector('#readStatus');
 const cardDisplay = document.querySelector('#card-display');
 
-let myLibrary = [];
+const myLibrary = [];
 
 const displayBooks = () => {
   const card = document.createElement('div');
@@ -23,7 +23,6 @@ const displayBooks = () => {
   const headerTag = document.createElement('h5');
   headerTag.classList.add('card-title');
   headerTag.append(myLibrary[myLibrary.length - 1].title);
-  console.log(myLibrary[myLibrary.length - 1].title);
   cardHeader.append(headerTag);
 
   const cardAuthor = document.createElement('p');
@@ -48,7 +47,7 @@ const displayBooks = () => {
     cardRead.append('Mark as read');
   }
 
-  cardRead.onclick = function () {
+  cardRead.onclick = () => {
     if (myLibrary[myLibrary.length - 1].read === 'Read') {
       myLibrary[myLibrary.length - 1].read = 'Not read';
       cardRead.innerHTML = 'Mark as read';
@@ -73,7 +72,7 @@ const displayBooks = () => {
   for (let i = 0; i < booksArray.length; i += 1) {
     booksArray[i].setAttribute('data-attribute', i);
   }
-  cardRemove.onclick = function () {
+  cardRemove.onclick = () => {
     const parentCard = cardRemove.parentElement.parentElement;
     const grandParentCard = parentCard.parentElement;
     grandParentCard.removeChild(parentCard);
@@ -84,14 +83,14 @@ const displayBooks = () => {
   displaybutton.classList.remove('d-none');
   formCard.classList.add('d-none');
 
-}
+};
 
 function Book(title, author, pages, genre, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.genre = genre;
-    this.read = read;
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.genre = genre;
+  this.read = read;
 }
 
 // display form
@@ -102,17 +101,17 @@ const addBookToLibrary = (e) => {
     bookAuthor.value,
     bookPages.value,
     bookGenre.value,
-    bookRead.checked ? 'Read' : 'Not read'
+    bookRead.checked ? 'Read' : 'Not read',
   );
   myLibrary.push(book);
   displayBooks();
-}
+};
 
 
 const displayForm = () => {
   displaybutton.classList.toggle('d-none');
   formCard.classList.toggle('d-none');
-}
+};
 // Event Listners
 displaybutton.addEventListener('click', displayForm, false);
 submitButton.addEventListener('click', addBookToLibrary, false);
