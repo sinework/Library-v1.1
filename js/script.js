@@ -74,6 +74,25 @@ submitButton.addEventListener("click",addBook, false);
      cardGenre.append(books[books.length-1].genre);
      cardBody.append(cardGenre);
 
+     let cardRead = document.createElement("button");
+     cardRead.classList.add("btn");
+     cardRead.classList.add("btn-secondary");
+     books[books.length-1].read == "Read" ? cardRead.append("Mark as unread") : cardRead.append("Mark as read");
+     cardRead.onclick = function(){
+       if (books[books.length-1].read == "Read") {
+         books[books.length-1].read = "Not read"
+         cardRead.innerHTML = "Mark as read"
+         console.log(books[books.length-1].read)
+       }
+       else {
+         books[books.length-1].read = "Read"
+         cardRead.innerHTML = "Mark as unread"
+         console.log(books[books.length-1].read)
+       }
+     }
+     cardBody.append(cardRead);
+     console.log(books[books.length-1].read)
+
      let cardRemove = document.createElement("button");
      cardRemove.classList.add("btn");
      cardRemove.classList.add("btn-danger");
