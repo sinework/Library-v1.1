@@ -2,11 +2,14 @@ const parentID=document.getElementById('form-holder');
     let divElement= 'div',
       elementID='form-div',
       headerElement='h3';
-      headerID='temp'; 
+      headerID='temp';
 let book={};
 
 let books=[
 ]
+
+let index = 0;
+
 // display form
 function addBook(e) {
     e.preventDefault()
@@ -18,8 +21,6 @@ function addBook(e) {
     books.push(book)
     book={};
     displayBooks();
-
-  
 
 }
 
@@ -36,18 +37,20 @@ const bookRead= document.querySelector("#readStatus");
 const cardDisplay= document.querySelector("#card-display");
 
 function displayForm(e){
-   
+
     displaybutton.classList.toggle("d-none")
     formCard.classList.toggle("d-none")
 }
 // Event Listners
 displaybutton.addEventListener("click",displayForm, false);
- submitButton.addEventListener("click",addBook, false);
+submitButton.addEventListener("click",addBook, false);
+
  function displayBooks(){
-   
-      
+
+
     let card=document.createElement("div");
     card.classList.add("card");
+    card.classList.add("books");
     card.classList.add("w-50");
     let cardHeader=document.createElement("div");
     cardHeader.classList.add("card-header");
@@ -67,20 +70,40 @@ displaybutton.addEventListener("click",displayForm, false);
      cardPages.append(books[books.length-1].pages);
      cardBody.append(cardPages);
 
-     let cardGenre= document.createElement("p");
+     let cardGenre = document.createElement("p");
      cardGenre.append(books[books.length-1].genre);
      cardBody.append(cardGenre);
+
+     let cardRemove = document.createElement("button");
+     cardRemove.classList.add("btn");
+     cardRemove.classList.add("btn-danger");
+     cardRemove.append("Remove this book");
+     cardBody.append(cardRemove);
 
      card.append(cardHeader);
      card.append(cardBody);
      cardDisplay.append(card);
 
-     displaybutton.classList.remove("d-none")
-formCard.classList.add("d-none")
+     let booksArray = document.getElementsByClassName("books");//array
+     for (let i = 0; i < booksArray.length; i++) {
+       booksArray[i].setAttribute("data-attribute", i);
+     }
+     cardRemove.onclick = function(){
+       parentCard = cardRemove.parentElement.parentElement;
+       grandParentCard = parentCard.parentElement;
+       grandParentCard.removeChild(parentCard);
+       books.splice(parentCard.getAttribute("data-attribute"), 1);
+       console.log(books);
 
-    
+     }
 
-console.log(books)
+
+     displaybutton.classList.remove("d-none");
+     formCard.classList.add("d-none");
+
+
+
+     console.log(books);
 
 
 }
