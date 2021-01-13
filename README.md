@@ -15,7 +15,7 @@ Our project can be found at https://github.com/sinework/Library-v1.1
 
 ## Live Demo
 
-You can find the demo [here](https://mysterious-thicket-97365.herokuapp.com/)
+You can find the demo [here](https://sinework.github.io/Library-v1.1/)
 
 
 ## To run the project in local
@@ -28,11 +28,16 @@ You can find the demo [here](https://mysterious-thicket-97365.herokuapp.com/)
 
 👤 **Author1**
 
-- Github: [@AkintoyeOlamide](https://github.com/AkintoyeOlamide)
+- Github: [@sinework](https://github.com/sinework)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/sinework-amare-shiferaw/)
+- Twitter: [Twitter](https://twitter.com/SineworkAmare)
 
 👤 **Author2**
 
 - Github: [@daviidy](https://github.com/daviidy)
+- Twitter: [@davidyao3](https://twitter.com/DavidYao3)
+- LinkedIn: [@daviidy](https://www.linkedin.com/in/david-yao-6bb95299/)
+- Personal Website: [@daviidy](http://david-yao.com)
 
 ## 🤝 Contributing
 
